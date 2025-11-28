@@ -31,3 +31,30 @@ def lcm(*args: int) -> int:
             current_lcm = _lcm_two(current_lcm, x)
         return current_lcm if current_lcm is not None else 0
 
+def fibonacci(n: int) -> int:
+    if not isinstance(n, int):
+        raise ValueError("fibonacci() requires an integer input")
+    if n < 0:
+        raise ValueError("fibonacci() isn't defined for negative indices")
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    a, b = 0, 1
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+    return b
+
+def mean(numbers: Iterable[float]) -> float:
+    if not isinstance(numbers, Iterable):
+        raise ValueError("mean() requires an iterable of numbers")
+    total = 0.0
+    count = 0
+    for x in numbers:
+        if not isinstance(x, (int, float)):
+            raise ValueError("mean() iterable must contain ONLY numbers")
+        total += x
+        count += 1
+    if count == 0:
+        raise ValueError("mean() of empty iterable is undefined")
+    return total / count
